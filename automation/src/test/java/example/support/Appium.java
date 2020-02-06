@@ -29,7 +29,9 @@ public abstract class Appium {
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
 
         try {
-            driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+            driver = new AppiumDriver(new URL("http://" +
+                    properties.getProperty("appium.server.ip") + ":" +
+                    properties.getProperty("appium.server.port") + "/wd/hub"), capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
