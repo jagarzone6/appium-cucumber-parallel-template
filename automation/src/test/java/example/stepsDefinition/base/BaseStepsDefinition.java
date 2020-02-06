@@ -1,4 +1,12 @@
 package example.stepsDefinition.base;
 
-public class BaseStepsDefinition {
+import example.support.World;
+
+public abstract class BaseStepsDefinition {
+
+    public World world;
+
+    public BaseStepsDefinition(World world) {
+        this.world = world;
+    }
 }

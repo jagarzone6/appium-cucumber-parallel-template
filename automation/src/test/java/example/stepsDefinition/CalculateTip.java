@@ -1,31 +1,35 @@
 package example.stepsDefinition;
 
+import example.stepsDefinition.base.BaseStepsDefinition;
+import example.support.World;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class CalculateTip {
+public class CalculateTip extends BaseStepsDefinition {
+
+    public CalculateTip(World world) {
+        super(world);
+    }
+
     @Given("I am using FasTip app")
     public void i_am_using_FasTip_app() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
-    @When("I enter {int} of bill amount")
+    @When("I use {int} of bill amount")
     public void i_enter_of_bill_amount(Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        world.mainLayout.setBillAmount(int1.toString());
+        world.mainLayout.calculateTip();
     }
 
-    @Then("tip value is {int}")
-    public void tip_value_is(Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("tip value is {string}")
+    public void tip_value_is(String amount) {
+        assert world.mainLayout.getTipAmount().equals(amount);
     }
 
-    @Then("total amount is {int}")
-    public void total_amount_is(Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("total amount is {string}")
+    public void total_amount_is(String amount) {
+        assert world.mainLayout.getTotalAmount().equals(amount);
     }
 }
