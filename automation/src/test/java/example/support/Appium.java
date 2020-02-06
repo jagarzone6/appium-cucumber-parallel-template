@@ -16,22 +16,29 @@ public abstract class Appium {
     private static Properties properties = new Properties();
 
     public static void initDriver() {
-        InputStream input = Appium.class.getClassLoader().getResourceAsStream("appium.properties");
+        InputStream input = Appium.class.getClassLoader().getResourceAsStream(
+                System.getenv().get("platform") + ".properties"
+        );
         try {
             properties.load(input);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        File apk = new File(properties.getProperty("apk.dir"), properties.getProperty("apk.name"));
+        File apk = new File(
+                properties.getProperty("apk.dir"),
+                properties.getProperty("apk.name"));
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, properties.getProperty("platform"));
         capabilities.setCapability(MobileCapabilityType.APP, apk.getAbsolutePath());
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
 
         try {
-            driver = new AppiumDriver(new URL("http://" +
-                    properties.getProperty("appium.server.ip") + ":" +
-                    properties.getProperty("appium.server.port") + "/wd/hub"), capabilities);
+            driver = new AppiumDriver(
+                    new URL("http://" +
+                            properties.getProperty("appium.server.ip") + ":" +
+                            properties.getProperty("appium.server.port") + "/wd/hub"),
+                    capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
