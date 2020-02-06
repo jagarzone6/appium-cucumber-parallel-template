@@ -9,12 +9,19 @@ public abstract class BaseLayout extends Appium {
         element.sendKeys(keys);
     }
 
+    protected void clearElement(WebElement element){
+        element.clear();
+    }
+
     protected String getText(WebElement element){
         return element.getText();
     }
 
-    protected void tapElement(WebElement element){
+    protected void clickElement(WebElement element){
         element.click();
     }
 
+    public void goBack(){
+        driver.navigate().back();
+    }
 }

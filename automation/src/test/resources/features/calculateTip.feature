@@ -1,6 +1,6 @@
 Feature: Calculate Tip
   As a user
-  I would like to calculate tip with different %
+  I would like to calculate tip with different bill amounts
   So that I can pay total amount
 
   Scenario: Calculate tip with default percentage (15%)

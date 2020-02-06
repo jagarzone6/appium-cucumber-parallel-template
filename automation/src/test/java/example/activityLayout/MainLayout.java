@@ -24,6 +24,14 @@ public class MainLayout extends BaseLayout {
     @iOSXCUITFindBy()
     private WebElement totalAmt_TextView;
 
+    @AndroidFindBy(id = "org.traeg.fastip:id/menu_settings")
+    @iOSXCUITFindBy()
+    private WebElement menu_settings;
+
+    @AndroidFindBy(id = "org.traeg.fastip:id/tipPctTextView")
+    @iOSXCUITFindBy()
+    private WebElement tipPct_TextView;
+
     public MainLayout() {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
@@ -33,7 +41,7 @@ public class MainLayout extends BaseLayout {
     }
 
     public void calculateTip() {
-        this.tapElement(calcTip_Button);
+        this.clickElement(calcTip_Button);
     }
 
     public String getTipAmount() {
@@ -42,5 +50,13 @@ public class MainLayout extends BaseLayout {
 
     public String getTotalAmount() {
         return this.getText(totalAmt_TextView);
+    }
+
+    public void goToSettings() {
+        this.clickElement(menu_settings);
+    }
+
+    public String getTipPercentage() {
+        return this.getText(tipPct_TextView);
     }
 }

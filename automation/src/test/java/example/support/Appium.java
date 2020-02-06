@@ -31,7 +31,7 @@ public abstract class Appium {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, properties.getProperty("platform"));
         capabilities.setCapability(MobileCapabilityType.APP, apk.getAbsolutePath());
-        capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
+        capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
 
         try {
             driver = new AppiumDriver(
