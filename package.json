@@ -1,0 +1,23 @@
+{
+  "name": "appiumtemplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "appium": "appium",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jagarzone6/appiumTemplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jagarzone6/appiumTemplate/issues"
+  },
+  "homepage": "https://github.com/jagarzone6/appiumTemplate#readme",
+  "dependencies": {
+    "appium": "^1.16.0"
+  }
+}
