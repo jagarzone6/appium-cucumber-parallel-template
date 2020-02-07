@@ -16,7 +16,7 @@ Feature: Change tip percentage
       | 20.00 | $120.00 |
       | 50.55 | $150.55 |
 
-  Scenario: Change tip percentage to valid value without save
+  Scenario: Change tip percentage and not save settings
     Given I use 100 of bill amount
     When I change tip percentage to "10.00"
     And go back to calculate view

@@ -1,4 +1,4 @@
-package example.support;
+package example.support.cucumber;
 
 import example.activityLayout.MainLayout;
 import example.activityLayout.SettingsLayout;

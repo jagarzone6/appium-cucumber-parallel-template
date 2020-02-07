@@ -1,7 +1,7 @@
 package example.stepsDefinition;
 
 import example.stepsDefinition.base.BaseStepsDefinition;
-import example.support.World;
+import example.support.cucumber.World;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

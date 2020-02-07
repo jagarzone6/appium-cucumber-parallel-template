@@ -15,9 +15,9 @@ public abstract class Appium {
     public static AppiumDriver driver;
     private static Properties properties = new Properties();
 
-    public static void initDriver() {
+    public static void initDriver(String platform, String udid) {
         InputStream input = Appium.class.getClassLoader().getResourceAsStream(
-                System.getenv().get("platform") + ".properties"
+                platform + ".properties"
         );
         try {
             properties.load(input);
@@ -29,9 +29,12 @@ public abstract class Appium {
                 properties.getProperty("apk.name"));
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, properties.getProperty("platform"));
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platform);
         capabilities.setCapability(MobileCapabilityType.APP, apk.getAbsolutePath());
-        capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
+        capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
+        if(!udid.equals("")) {
+            capabilities.setCapability(MobileCapabilityType.UDID, udid);
+        }
 
         try {
             driver = new AppiumDriver(

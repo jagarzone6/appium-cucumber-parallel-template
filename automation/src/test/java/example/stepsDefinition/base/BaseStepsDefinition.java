@@ -1,6 +1,6 @@
 package example.stepsDefinition.base;
 
-import example.support.World;
+import example.support.cucumber.World;
 
 public abstract class BaseStepsDefinition {
 
