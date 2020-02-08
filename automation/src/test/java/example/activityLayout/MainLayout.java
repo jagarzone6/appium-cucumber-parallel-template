@@ -8,6 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class MainLayout extends BaseLayout {
+
+    public MainLayout() {
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+    }
+
     @AndroidFindBy(id = "org.traeg.fastip:id/billAmtEditText")
     @iOSXCUITFindBy()
     private WebElement billAmount_Input;
@@ -31,10 +36,6 @@ public class MainLayout extends BaseLayout {
     @AndroidFindBy(id = "org.traeg.fastip:id/tipPctTextView")
     @iOSXCUITFindBy()
     private WebElement tipPct_TextView;
-
-    public MainLayout() {
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    }
 
     public void setBillAmount(String amount) {
         this.sendKeys(amount, billAmount_Input);

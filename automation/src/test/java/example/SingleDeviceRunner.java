@@ -23,12 +23,13 @@ public class SingleDeviceRunner {
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put("platform", "Android");
         parameters.put("udid", "");
+        parameters.put("server_url", "http://127.0.0.1:4723/wd/hub");
         test.setParameters(parameters);
         List<XmlSuite> suites = new ArrayList<XmlSuite>();
         suites.add(suite);
         TestNG tng = new TestNG();
         tng.setXmlSuites(suites);
-        tng.setOutputDirectory("target");
+        tng.setOutputDirectory("target/testng-report");
         tng.run();
     }
 }

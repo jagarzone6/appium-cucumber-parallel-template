@@ -25,6 +25,7 @@ public class ParallelDevicesRunner {
         Map<String, String> parameters = new HashMap<String, String>();
         parameters.put("platform", "Android");
         parameters.put("udid", "emulator-5554");
+        parameters.put("server_url", "http://127.0.0.1:4723/wd/hub");
         test.setParameters(parameters);
 
         XmlTest test2 = new XmlTest(suite);
@@ -35,12 +36,13 @@ public class ParallelDevicesRunner {
         Map<String, String> parameters2 = new HashMap<String, String>();
         parameters2.put("platform", "Android");
         parameters2.put("udid", "R58M67VEK3M");
+        parameters2.put("server_url", "http://127.0.0.1:4724/wd/hub");
         test2.setParameters(parameters2);
 
         List<XmlSuite> suites = new ArrayList<XmlSuite>();
         suites.add(suite);
         TestNG tng = new TestNG();
-        tng.setOutputDirectory("target/reports");
+        tng.setOutputDirectory("target/testng-report");
         tng.setXmlSuites(suites);
         tng.run();
     }

@@ -12,11 +12,11 @@ import org.testng.annotations.Parameters;
 public class TestNGCucumberTests extends AbstractTestNGCucumberTests {
     public TestNGCucumberTests(String testName){
         testName.trim();
-        //System.setProperty("cucumber.plugin", "json:target/reports/");
     }
     @BeforeClass
-    @Parameters({"platform", "udid"})
-    public static void setUpDriver(String platform, String udid) {
-        Appium.initDriver(platform, udid);
+    @Parameters({"platform", "udid", "server_url"})
+    public static void setUpDriver(String platform, String udid, String server_url) {
+        System.out.println("Current Thread ID- " + Thread.currentThread().getId() + " For Thread- " + Thread.currentThread().getName());
+        Appium.initDriver(platform, udid, server_url);
     }
 }

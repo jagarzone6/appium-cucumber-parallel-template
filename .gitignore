@@ -24,4 +24,5 @@ hs_err_pid*
 
 **/.idea/**
 **/*.iml
-node_modules/**
+appium-server/node_modules/**
+**/target/**

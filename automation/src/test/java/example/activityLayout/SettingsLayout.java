@@ -8,6 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class SettingsLayout extends BaseLayout {
+
+    public SettingsLayout() {
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+    }
+
     @AndroidFindBy(id = "org.traeg.fastip:id/tipPercentageEditText")
     @iOSXCUITFindBy()
     private WebElement tipPercentage_EditText;
@@ -15,11 +20,6 @@ public class SettingsLayout extends BaseLayout {
     @AndroidFindBy(id = "org.traeg.fastip:id/saveSettingsButton")
     @iOSXCUITFindBy()
     private WebElement saveSettings_Button;
-
-
-    public SettingsLayout() {
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    }
 
     public void clearTipPercentage() {
         this.clearElement(tipPercentage_EditText);
