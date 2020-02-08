@@ -35,7 +35,7 @@ public class ParallelDevicesRunner {
         test2.setXmlClasses(classes2);
         Map<String, String> parameters2 = new HashMap<String, String>();
         parameters2.put("platform", "Android");
-        parameters2.put("udid", "R58M67VEK3M");
+        parameters2.put("udid", "emulator-5556");
         parameters2.put("server_url", "http://127.0.0.1:4724/wd/hub");
         test2.setParameters(parameters2);
 
