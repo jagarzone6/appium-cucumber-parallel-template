@@ -17,8 +17,9 @@ public class TestNGCucumberTests extends AbstractTestNGCucumberTests {
     public static void setUpDriver(String platform, String udid, String server_url) {
         Appium.initDriver(platform, udid, server_url);
     }
+
     @AfterClass
-    public static void shutDown(){
+    public static void shutDown() {
         Appium.driverThreadLocal.get().quit();
     }
 }

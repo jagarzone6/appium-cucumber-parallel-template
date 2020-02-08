@@ -15,7 +15,7 @@ public abstract class Appium {
             new ThreadLocal<AppiumDriver>();
     private static Properties properties = new Properties();
 
-    public static AppiumDriver initDriver(String platform, String udid, String serverURL) {
+    public static void initDriver(String platform, String udid, String serverURL) {
         InputStream input = Appium.class.getClassLoader().getResourceAsStream(
                 platform + ".properties"
         );
@@ -38,7 +38,6 @@ public abstract class Appium {
             driverThreadLocal.set(new AppiumDriver(
                     new URL(serverURL),
                     capabilities));
-            return driverThreadLocal.get();
         } catch (Exception e) {
             throw new Error("Could not initialize AppiumDriver: " + e.getCause().getMessage());
         }
