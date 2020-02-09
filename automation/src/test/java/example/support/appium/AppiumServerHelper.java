@@ -22,7 +22,7 @@ public class AppiumServerHelper {
         properties.load(input);
         AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder();
         serviceBuilder.usingDriverExecutable(new File(properties.getProperty("nodejs.executable.path")));
-        serviceBuilder.withAppiumJS(new File(properties.getProperty("appiumjs.executable.path")));
+        serviceBuilder.withAppiumJS(new File(properties.getProperty("appiumjs.instalation.path")));
         HashMap<String, String> environment = new HashMap();
         environment.put("PATH", System.getenv("PATH"));
         serviceBuilder.withEnvironment(environment);
