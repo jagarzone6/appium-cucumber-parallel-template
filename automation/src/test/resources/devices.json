@@ -1,14 +1,12 @@
 [
   {
-    "name": "Android native app test on Android A device",
+    "name": "Android native app test on Android Pixel device",
     "platform": "Android",
-    "udid": "emulator-5554",
-    "server_url": "http://127.0.0.1:4723/wd/hub"
+    "udid": "emulator-5554"
   },
   {
-    "name": "Android native app test on Android B device",
+    "name": "Android native app test on Android Pixel 2 device",
     "platform": "Android",
-    "udid": "emulator-5556",
-    "server_url": "http://127.0.0.1:4724/wd/hub"
+    "udid": "emulator-5556"
   }
 ]

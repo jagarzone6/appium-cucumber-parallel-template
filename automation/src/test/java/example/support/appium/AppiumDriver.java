@@ -1,22 +1,20 @@
-package example.support;
+package example.support.appium;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.Properties;
 
-public abstract class Appium {
-    protected static ThreadLocal<AppiumDriver> driverThreadLocal =
-            new ThreadLocal<AppiumDriver>();
+public abstract class AppiumDriver {
+    protected static ThreadLocal<io.appium.java_client.AppiumDriver> driverThreadLocal =
+            new ThreadLocal<io.appium.java_client.AppiumDriver>();
     private static Properties properties = new Properties();
 
-    public static void initDriver(String platform, String udid, String serverURL) {
-        InputStream input = Appium.class.getClassLoader().getResourceAsStream(
+    public static void initDriver(String platform, String udid) {
+        InputStream input = AppiumDriver.class.getClassLoader().getResourceAsStream(
                 platform + ".properties"
         );
         try {
@@ -30,16 +28,20 @@ public abstract class Appium {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platform);
         capabilities.setCapability(MobileCapabilityType.APP, apk.getAbsolutePath());
-        //capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
+        capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
         if (!udid.equals("")) {
             capabilities.setCapability(MobileCapabilityType.UDID, udid);
         }
         try {
-            driverThreadLocal.set(new AppiumDriver(
-                    new URL(serverURL),
+            driverThreadLocal.set(new io.appium.java_client.AppiumDriver(
+                    AppiumServerHelper.launchAppiumServer(),
                     capabilities));
         } catch (Exception e) {
             throw new Error("Could not initialize AppiumDriver: " + e.getCause().getMessage());
         }
+    }
+
+    public static void shutDownDriver(){
+        driverThreadLocal.get().quit();
     }
 }

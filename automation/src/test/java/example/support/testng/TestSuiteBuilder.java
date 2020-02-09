@@ -26,7 +26,6 @@ public class TestSuiteBuilder {
             Map<String, String> parameters = new HashMap<String, String>();
             parameters.put("platform", device.get("platform").toString());
             parameters.put("udid", device.get("udid").toString());
-            parameters.put("server_url", device.get("server_url").toString());
             test.setParameters(parameters);
         }
         List<XmlSuite> suites = new ArrayList<XmlSuite>();

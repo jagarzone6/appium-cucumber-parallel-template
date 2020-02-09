@@ -1,5 +1,7 @@
 package example.support;
 
+import example.support.appium.AppiumDriver;
+import example.support.appium.AppiumServerHelper;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterClass;
@@ -13,13 +15,14 @@ import org.testng.annotations.Parameters;
 public class TestNGCucumberTests extends AbstractTestNGCucumberTests {
 
     @BeforeClass
-    @Parameters({"platform", "udid", "server_url"})
-    public static void setUpDriver(String platform, String udid, String server_url) {
-        Appium.initDriver(platform, udid, server_url);
+    @Parameters({"platform", "udid"})
+    public static void setUpDriver(String platform, String udid) {
+        AppiumDriver.initDriver(platform, udid);
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public static void shutDown() {
-        Appium.driverThreadLocal.get().quit();
+        AppiumServerHelper.shutDownAppiumServer();
+        AppiumDriver.shutDownDriver();
     }
 }
