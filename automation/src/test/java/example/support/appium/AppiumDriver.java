@@ -13,22 +13,24 @@ public abstract class AppiumDriver {
             new ThreadLocal<io.appium.java_client.AppiumDriver>();
     private static Properties properties = new Properties();
 
-    public static void initDriver(String platform, String udid) {
+    public static void initDriver(String deviceName, String platformName, String platformVersion, String udid) {
         InputStream input = AppiumDriver.class.getClassLoader().getResourceAsStream(
-                platform + ".properties"
+                platformName + ".properties"
         );
         try {
             properties.load(input);
         } catch (IOException e) {
-            throw new Error("Properties file not found: " + platform + ".properties");
+            throw new Error("Properties file not found: " + platformName + ".properties");
         }
         File apk = new File(
                 properties.getProperty("apk.dir"),
                 properties.getProperty("apk.name"));
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platform);
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platformName);
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
         capabilities.setCapability(MobileCapabilityType.APP, apk.getAbsolutePath());
         capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, platformVersion);
         if (!udid.equals("")) {
             capabilities.setCapability(MobileCapabilityType.UDID, udid);
         }
@@ -41,7 +43,7 @@ public abstract class AppiumDriver {
         }
     }
 
-    public static void shutDownDriver(){
+    public static void shutDownDriver() {
         driverThreadLocal.get().quit();
     }
 }

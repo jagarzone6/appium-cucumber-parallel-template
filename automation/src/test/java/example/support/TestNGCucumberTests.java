@@ -15,9 +15,9 @@ import org.testng.annotations.Parameters;
 public class TestNGCucumberTests extends AbstractTestNGCucumberTests {
 
     @BeforeClass
-    @Parameters({"platform", "udid"})
-    public static void setUpDriver(String platform, String udid) {
-        AppiumDriver.initDriver(platform, udid);
+    @Parameters({"deviceName", "platformName", "platformVersion", "udid"})
+    public static void setUpDriver(String deviceName, String platformName, String platformVersion, String udid) {
+        AppiumDriver.initDriver(deviceName, platformName, platformVersion, udid);
     }
 
     @AfterClass(alwaysRun = true)

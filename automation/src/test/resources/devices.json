@@ -1,12 +1,14 @@
 [
   {
-    "name": "Android native app test on Android Pixel device",
-    "platform": "Android",
+    "deviceName": "",
+    "platformName": "Android",
+    "platformVersion": "",
     "udid": "emulator-5554"
   },
   {
-    "name": "Android native app test on Android Pixel 2 device",
-    "platform": "Android",
+    "deviceName": "",
+    "platformName": "Android",
+    "platformVersion": "",
     "udid": "emulator-5556"
   }
 ]
