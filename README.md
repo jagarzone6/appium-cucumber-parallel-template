@@ -3,7 +3,7 @@ All tests are written in Cucumber + Appium and executed with TestNG to support e
 
 ![](2d.gif)
 
-##Pre-requisites
+## Pre-requisites
 Install:
 
     - NodeJS & npm
