@@ -2,6 +2,7 @@
 All tests are written in Cucumber + Appium and executed with TestNG to support execution for different devices in parallel.
 
 ![](2d.gif)
+
 ##Pre-requisites
 Install:
 
