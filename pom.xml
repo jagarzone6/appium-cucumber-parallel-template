@@ -23,6 +23,7 @@
                 <configuration>
                     <mainClass>example.ParallelDevicesTestsRunner</mainClass>
                     <classpathScope>test</classpathScope>
+                    <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
             <plugin>
