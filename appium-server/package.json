@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/jagarzone6/appiumTemplate#readme",
   "dependencies": {
-    "appium": "^1.16.0"
+    "appium": "^3.2.0"
   }
 }
